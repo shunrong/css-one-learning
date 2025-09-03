@@ -5,101 +5,136 @@
       <div class="container mx-auto px-4 py-20">
         <div class="text-center max-w-4xl mx-auto">
           <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            CSS <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">全栈学习</span>
+            前端 <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">全栈学习</span>
           </h1>
           <p class="text-xl text-gray-600 mb-8 leading-relaxed">
-            从基础样式到现代工程化方案，一站式掌握 CSS 的方方面面
+            系统性学习前端核心技术栈，从 HTML 结构到 CSS 样式，再到 JavaScript 交互，全面提升前端开发技能
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <router-link to="/basics" class="btn-primary text-lg px-8 py-3">
+            <router-link to="/css" class="btn-primary text-lg px-8 py-3">
               开始学习
             </router-link>
-            <a href="#features" class="btn-secondary text-lg px-8 py-3">
-              了解更多
+            <a href="#technologies" class="btn-secondary text-lg px-8 py-3">
+              探索技术栈
             </a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 特性介绍 -->
-    <section id="features" class="py-20 bg-white">
+    <!-- 技术栈介绍 -->
+    <section id="technologies" class="py-20 bg-white">
       <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">学习内容</h2>
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">核心技术栈</h2>
           <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-            系统性的 CSS 知识体系，从基础概念到高级应用，帮你构建完整的前端样式技能树
+            掌握前端开发的三大核心技术，构建完整的前端技能体系
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <div 
-            v-for="(feature, index) in features" 
+            v-for="(tech, index) in technologies" 
             :key="index"
-            class="feature-card card card-hover fade-in"
-            :style="{ animationDelay: `${index * 0.1}s` }"
+            class="tech-card"
+            :style="{ animationDelay: `${index * 0.2}s` }"
           >
-            <div class="feature-icon mb-6">
-              <div :class="feature.iconClass">
-                <i :class="feature.icon"></i>
+            <div class="tech-icon mb-6">
+              <div :class="tech.iconClass">
+                <span class="tech-symbol">{{ tech.symbol }}</span>
               </div>
             </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-3">{{ feature.title }}</h3>
-            <p class="text-gray-600 mb-4">{{ feature.description }}</p>
-            <router-link :to="feature.path" class="text-blue-600 hover:text-blue-700 font-medium">
-              深入学习 →
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">{{ tech.title }}</h3>
+            <p class="text-gray-600 mb-6 leading-relaxed">{{ tech.description }}</p>
+            <div class="mb-6">
+              <div class="flex flex-wrap gap-2">
+                <span 
+                  v-for="skill in tech.skills" 
+                  :key="skill"
+                  class="skill-tag"
+                >
+                  {{ skill }}
+                </span>
+              </div>
+            </div>
+            <router-link 
+              :to="tech.path" 
+              class="tech-button"
+              :class="tech.available ? 'tech-button-available' : 'tech-button-disabled'"
+            >
+              {{ tech.available ? '开始学习' : '即将推出' }}
             </router-link>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 技术栈展示 -->
+    <!-- 学习特色 -->
     <section class="py-20 bg-gray-50">
       <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">技术栈概览</h2>
-          <p class="text-lg text-gray-600">涵盖现代前端开发中的主流 CSS 技术</p>
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">学习特色</h2>
+          <p class="text-lg text-gray-600">实用导向的学习方式，注重实际开发中的应用</p>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div 
-            v-for="(tech, index) in techStack" 
+            v-for="(feature, index) in learningFeatures" 
             :key="index"
-            class="tech-item text-center"
+            class="feature-item text-center"
           >
-            <div class="tech-logo mx-auto mb-3" :style="{ backgroundColor: tech.color }">
-              <span class="tech-name">{{ tech.name }}</span>
+            <div class="feature-icon-wrapper mb-4">
+              <div :class="feature.iconClass">
+                <span class="text-2xl">{{ feature.icon }}</span>
+              </div>
             </div>
-            <p class="text-sm text-gray-600">{{ tech.description }}</p>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ feature.title }}</h3>
+            <p class="text-sm text-gray-600">{{ feature.description }}</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 学习路径 -->
+    <!-- 推荐学习路径 -->
     <section class="py-20 bg-white">
       <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-          <h2 class="text-3xl font-bold text-gray-900 mb-4">学习路径</h2>
-          <p class="text-lg text-gray-600">按照推荐的顺序，循序渐进掌握 CSS</p>
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">推荐学习路径</h2>
+          <p class="text-lg text-gray-600">循序渐进，从结构到样式到交互，构建完整的前端技能</p>
         </div>
 
         <div class="max-w-4xl mx-auto">
-          <div class="learning-path">
+          <div class="learning-roadmap">
             <div 
-              v-for="(step, index) in learningPath" 
+              v-for="(step, index) in learningRoadmap" 
               :key="index"
-              class="step-item"
-              :class="{ 'step-completed': step.completed }"
+              class="roadmap-step"
+              :class="{ 'step-available': step.available }"
             >
-              <div class="step-number">{{ index + 1 }}</div>
+              <div class="step-indicator">
+                <div class="step-number">{{ index + 1 }}</div>
+                <div v-if="index < learningRoadmap.length - 1" class="step-connector"></div>
+              </div>
               <div class="step-content">
                 <h3 class="step-title">{{ step.title }}</h3>
                 <p class="step-description">{{ step.description }}</p>
-                <router-link :to="step.path" class="step-link">
-                  {{ step.completed ? '复习' : '开始学习' }}
-                </router-link>
+                <div class="step-skills">
+                  <span 
+                    v-for="skill in step.skills" 
+                    :key="skill"
+                    class="skill-chip"
+                  >
+                    {{ skill }}
+                  </span>
+                </div>
+                <component 
+                  :is="step.available ? 'router-link' : 'div'"
+                  :to="step.available ? step.path : undefined"
+                  class="step-action"
+                  :class="step.available ? 'step-action-available' : 'step-action-disabled'"
+                >
+                  {{ step.available ? '开始学习' : '即将推出' }}
+                </component>
               </div>
             </div>
           </div>
@@ -114,88 +149,82 @@ export default {
   name: 'HomePage',
   data() {
     return {
-      features: [
+      technologies: [
         {
-          title: 'CSS 基础',
-          description: '掌握布局、颜色、字体、间距、边框、阴影、变换和动画等核心概念',
-          path: '/basics',
-          icon: 'css3-alt',
-          iconClass: 'w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center'
+          title: 'HTML',
+          symbol: '</>',
+          description: '网页的骨架结构，掌握语义化标签、表单处理、多媒体内容、Canvas 绘图等实用技能',
+          skills: ['语义化标签', '表单开发', '音视频处理', 'Canvas 绘图', 'Web 组件'],
+          path: '/html',
+          available: true,
+          iconClass: 'w-20 h-20 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center text-3xl font-bold'
         },
         {
-          title: 'CSS 预处理器',
-          description: '学习 Sass 和 Less，了解变量、嵌套、混合器等高级特性',
-          path: '/preprocessors',
-          icon: 'sass',
-          iconClass: 'w-12 h-12 bg-pink-100 text-pink-600 rounded-lg flex items-center justify-content'
+          title: 'CSS',
+          symbol: '{}',
+          description: '网页的视觉样式，从基础布局到现代工程化方案，全面掌握样式设计与开发技能',
+          skills: ['布局设计', '响应式开发', '动画效果', '预处理器', '工程化方案'],
+          path: '/css',
+          available: true,
+          iconClass: 'w-20 h-20 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-3xl font-bold'
         },
         {
-          title: 'PostCSS 后处理',
-          description: '掌握现代 CSS 工程化必备的后处理工具和插件生态',
-          path: '/postcss',
-          icon: 'cogs',
-          iconClass: 'w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center'
-        },
-        {
-          title: 'CSS-in-JS',
-          description: '探索组件化时代的样式解决方案，理解其原理和最佳实践',
-          path: '/css-in-js',
-          icon: 'js-square',
-          iconClass: 'w-12 h-12 bg-yellow-100 text-yellow-600 rounded-lg flex items-center justify-center'
-        },
-        {
-          title: 'TailwindCSS',
-          description: '掌握原子化 CSS 框架，提升开发效率和样式一致性',
-          path: '/tailwind',
-          icon: 'wind',
-          iconClass: 'w-12 h-12 bg-cyan-100 text-cyan-600 rounded-lg flex items-center justify-center'
-        },
-        {
-          title: '最佳实践',
-          description: '学习现代前端项目中的 CSS 架构设计和性能优化策略',
-          path: '/best-practices',
-          icon: 'star',
-          iconClass: 'w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center'
+          title: 'JavaScript',
+          symbol: 'JS',
+          description: '网页的交互逻辑，学习现代 JavaScript 特性、DOM 操作、异步编程等核心概念',
+          skills: ['ES6+ 语法', 'DOM 操作', '异步编程', '模块化', '前端框架'],
+          path: '/javascript',
+          available: false,
+          iconClass: 'w-20 h-20 bg-yellow-100 text-yellow-600 rounded-2xl flex items-center justify-center text-3xl font-bold'
         }
       ],
-      techStack: [
-        { name: 'CSS3', color: '#1572B6', description: '现代CSS标准' },
-        { name: 'Sass', color: '#CF649A', description: 'CSS预处理器' },
-        { name: 'Less', color: '#1D365D', description: 'CSS预处理器' },
-        { name: 'PostCSS', color: '#DD3A0A', description: 'CSS后处理' },
-        { name: 'Styled', color: '#DB7093', description: 'CSS-in-JS' },
-        { name: 'Tailwind', color: '#06B6D4', description: '原子化CSS' }
+      learningFeatures: [
+        {
+          title: '实用导向',
+          description: '专注实际开发中的应用场景',
+          icon: '🎯',
+          iconClass: 'w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto'
+        },
+        {
+          title: '互动演示',
+          description: '丰富的代码示例和实时预览',
+          icon: '⚡',
+          iconClass: 'w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto'
+        },
+        {
+          title: '现代标准',
+          description: '基于最新的Web标准和最佳实践',
+          icon: '🚀',
+          iconClass: 'w-16 h-16 bg-purple-50 rounded-full flex items-center justify-center mx-auto'
+        },
+        {
+          title: '循序渐进',
+          description: '从基础到高级的系统性学习路径',
+          icon: '📚',
+          iconClass: 'w-16 h-16 bg-orange-50 rounded-full flex items-center justify-center mx-auto'
+        }
       ],
-      learningPath: [
+      learningRoadmap: [
         {
-          title: 'CSS 基础知识',
-          description: '学习 CSS 的基本语法、选择器、盒模型等核心概念',
-          path: '/basics',
-          completed: false
+          title: 'HTML 结构基础',
+          description: '掌握HTML标签、语义化开发、表单设计等核心技能',
+          skills: ['语义化标签', '表单验证', '多媒体内容', 'SEO优化'],
+          path: '/html',
+          available: true
         },
         {
-          title: 'CSS 预处理器',
-          description: '掌握 Sass/Less 的语法和工程化应用',
-          path: '/preprocessors',
-          completed: false
+          title: 'CSS 样式设计',
+          description: '学习CSS布局、动画、响应式设计和现代CSS工程化',
+          skills: ['Flexbox/Grid', '响应式设计', 'CSS动画', '预处理器'],
+          path: '/css',
+          available: true
         },
         {
-          title: 'PostCSS 生态',
-          description: '了解 CSS 后处理的强大功能和插件系统',
-          path: '/postcss',
-          completed: false
-        },
-        {
-          title: 'CSS-in-JS 方案',
-          description: '探索组件化开发中的样式管理最佳实践',
-          path: '/css-in-js',
-          completed: false
-        },
-        {
-          title: 'TailwindCSS 实战',
-          description: '学习原子化 CSS 的设计理念和实际应用',
-          path: '/tailwind',
-          completed: false
+          title: 'JavaScript 交互',
+          description: '掌握JavaScript编程、DOM操作和现代前端开发',
+          skills: ['ES6+语法', 'DOM操作', '异步编程', '模块化'],
+          path: '/javascript',
+          available: false
         }
       ]
     }
@@ -211,133 +240,241 @@ export default {
   align-items: center;
 }
 
-/* 特性卡片样式 */
-.feature-card {
+/* 技术栈卡片样式 */
+.tech-card {
   text-align: center;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 2rem;
   background: white;
-  transition: all 0.3s ease;
+  border: 2px solid #f1f5f9;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
 }
 
-.feature-card:hover {
+.tech-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.tech-card:hover::before {
+  transform: translateX(0);
+}
+
+.tech-card:hover {
   border-color: #3b82f6;
-  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.1);
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+  transform: translateY(-8px);
 }
 
-.feature-icon {
+.tech-icon {
   display: flex;
   justify-content: center;
+  margin-bottom: 1.5rem;
 }
 
-/* 技术栈样式 */
-.tech-item {
+.tech-symbol {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+}
+
+.skill-tag {
+  display: inline-block;
+  background: #f1f5f9;
+  color: #475569;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin: 0.125rem;
+}
+
+.tech-button {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.tech-button-available {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: white;
+}
+
+.tech-button-available:hover {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+}
+
+.tech-button-disabled {
+  background: #f1f5f9;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+/* 学习特色样式 */
+.feature-item {
   opacity: 0;
   animation: fadeInUp 0.6s ease forwards;
 }
 
-.tech-item:nth-child(1) { animation-delay: 0.1s; }
-.tech-item:nth-child(2) { animation-delay: 0.2s; }
-.tech-item:nth-child(3) { animation-delay: 0.3s; }
-.tech-item:nth-child(4) { animation-delay: 0.4s; }
-.tech-item:nth-child(5) { animation-delay: 0.5s; }
-.tech-item:nth-child(6) { animation-delay: 0.6s; }
+.feature-item:nth-child(1) { animation-delay: 0.1s; }
+.feature-item:nth-child(2) { animation-delay: 0.2s; }
+.feature-item:nth-child(3) { animation-delay: 0.3s; }
+.feature-item:nth-child(4) { animation-delay: 0.4s; }
 
-.tech-logo {
-  width: 60px;
-  height: 60px;
-  border-radius: 12px;
+.feature-icon-wrapper {
   display: flex;
-  align-items: center;
   justify-content: center;
-  font-weight: bold;
-  color: white;
-  font-size: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
-.tech-name {
-  color: white;
-  font-weight: 600;
-  font-size: 0.75rem;
 }
 
 /* 学习路径样式 */
-.learning-path {
+.learning-roadmap {
   position: relative;
 }
 
-.learning-path::before {
-  content: '';
-  position: absolute;
-  left: 20px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
-}
-
-.step-item {
+.roadmap-step {
   display: flex;
   align-items: flex-start;
   margin-bottom: 3rem;
   position: relative;
 }
 
+.step-indicator {
+  position: relative;
+  margin-right: 2rem;
+}
+
 .step-number {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   background: white;
-  border: 3px solid #3b82f6;
+  border: 3px solid #e2e8f0;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  color: #3b82f6;
-  margin-right: 2rem;
+  color: #94a3b8;
+  font-size: 1.125rem;
   z-index: 1;
+  position: relative;
+  transition: all 0.3s ease;
 }
 
-.step-completed .step-number {
-  background: #3b82f6;
-  color: white;
+.step-available .step-number {
+  border-color: #3b82f6;
+  color: #3b82f6;
+  background: #dbeafe;
+}
+
+.step-connector {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 60px;
+  background: #e2e8f0;
+}
+
+.step-available .step-connector {
+  background: linear-gradient(to bottom, #3b82f6, #e2e8f0);
 }
 
 .step-content {
   flex: 1;
   background: white;
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 2px solid #f1f5f9;
+  transition: all 0.3s ease;
+}
+
+.step-available .step-content {
+  border-color: #dbeafe;
+}
+
+.step-content:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .step-title {
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 1.375rem;
+  font-weight: 700;
   color: #1f2937;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .step-description {
   color: #6b7280;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   line-height: 1.6;
+  font-size: 1rem;
 }
 
-.step-link {
-  display: inline-flex;
-  align-items: center;
-  color: #3b82f6;
+.step-skills {
+  margin-bottom: 1.5rem;
+}
+
+.skill-chip {
+  display: inline-block;
+  background: #f8fafc;
+  color: #475569;
+  padding: 0.375rem 0.875rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
   font-weight: 500;
-  text-decoration: none;
-  transition: color 0.2s ease;
+  margin: 0.25rem 0.25rem 0.25rem 0;
+  border: 1px solid #e2e8f0;
 }
 
-.step-link:hover {
-  color: #2563eb;
+.step-available .skill-chip {
+  background: #eff6ff;
+  color: #3b82f6;
+  border-color: #bfdbfe;
+}
+
+.step-action {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.step-action-available {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+}
+
+.step-action-available:hover {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+}
+
+.step-action-disabled {
+  background: #f8fafc;
+  color: #94a3b8;
+  cursor: not-allowed;
+  border: 1px solid #e2e8f0;
 }
 
 /* 动画 */

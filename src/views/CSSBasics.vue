@@ -20,7 +20,7 @@
               <ul class="space-y-2">
                 <li v-for="item in modules" :key="item.path">
                   <router-link
-                    :to="`/basics/${item.path}`"
+                    :to="`/css/basics/${item.path}`"
                     class="nav-item"
                     :class="{ 'nav-item-active': $route.path.includes(item.path) }"
                   >
@@ -45,7 +45,7 @@
         <!-- 主内容区域 -->
         <main class="flex-1">
           <!-- 默认概览页面 -->
-          <div v-if="$route.path === '/basics'" class="overview">
+          <div v-if="$route.path === '/css/basics'" class="overview">
             <div class="bg-white rounded-lg shadow-md p-8 mb-8">
               <h2 class="text-2xl font-bold text-gray-900 mb-4">CSS 基础概览</h2>
               <p class="text-gray-600 mb-6 leading-relaxed">
@@ -84,10 +84,9 @@
 
             <!-- 模块卡片 -->
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-              <router-link
+              <div
                 v-for="item in modules"
                 :key="item.path"
-                :to="`/basics/${item.path}`"
                 class="module-card group"
               >
                 <div class="module-icon" :class="item.iconClass">
@@ -95,10 +94,7 @@
                 </div>
                 <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ item.name }}</h3>
                 <p class="text-gray-600 text-sm">{{ item.description }}</p>
-                <div class="mt-4 text-blue-600 font-medium text-sm">
-                  立即学习 →
-                </div>
-              </router-link>
+              </div>
             </div>
           </div>
 

@@ -7,22 +7,27 @@
           <!-- Logo -->
           <router-link to="/" class="flex items-center space-x-2">
             <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-              <span class="text-white font-bold text-sm">CSS</span>
+              <span class="text-white font-bold text-xs">前端</span>
             </div>
-            <span class="text-xl font-bold text-gray-900">CSS One Learning</span>
+            <span class="text-xl font-bold text-gray-900">前端全栈学习</span>
           </router-link>
 
           <!-- 桌面端导航 -->
           <div class="hidden md:flex items-center space-x-8">
-            <router-link
+            <component
               v-for="item in navItems"
               :key="item.path"
-              :to="item.path"
+              :is="item.disabled ? 'span' : 'router-link'"
+              :to="item.disabled ? undefined : item.path"
               class="nav-link"
-              :class="{ 'nav-link-active': $route.path.startsWith(item.path) }"
+              :class="{ 
+                'nav-link-active': !item.disabled && $route.path.startsWith(item.path),
+                'nav-link-disabled': item.disabled
+              }"
             >
               {{ item.name }}
-            </router-link>
+              <span v-if="item.disabled" class="text-xs ml-1 opacity-60">敬请期待</span>
+            </component>
           </div>
 
           <!-- 移动端菜单按钮 -->
@@ -39,15 +44,20 @@
 
         <!-- 移动端导航菜单 -->
         <div v-show="mobileMenuOpen" class="md:hidden border-t border-gray-200 py-4">
-          <router-link
+          <component
             v-for="item in navItems"
             :key="item.path"
-            :to="item.path"
-            class="block px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md"
-            @click="mobileMenuOpen = false"
+            :is="item.disabled ? 'div' : 'router-link'"
+            :to="item.disabled ? undefined : item.path"
+            class="block px-4 py-2 rounded-md"
+            :class="item.disabled 
+              ? 'text-gray-400 cursor-not-allowed' 
+              : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'"
+            @click="!item.disabled && (mobileMenuOpen = false)"
           >
             {{ item.name }}
-          </router-link>
+            <span v-if="item.disabled" class="text-xs ml-1">敬请期待</span>
+          </component>
         </div>
       </div>
     </nav>
@@ -61,9 +71,9 @@
     <footer class="bg-white border-t border-gray-200 mt-8">
       <div class="container mx-auto px-4 py-8">
         <div class="text-center text-gray-600 py-4">
-          <p>&copy; 2024 CSS One Learning. 一个全面的 CSS 学习平台</p>
+          <p>&copy; 2024 前端全栈学习. 系统性的前端技术学习平台</p>
           <p class="mt-2 text-sm">
-            涵盖 CSS 基础、预处理器、后处理器、CSS-in-JS 和 TailwindCSS
+            涵盖 HTML 结构、CSS 样式、JavaScript 交互等前端核心技术
           </p>
         </div>
       </div>
@@ -78,11 +88,9 @@ export default {
     return {
       mobileMenuOpen: false,
       navItems: [
-        { name: 'CSS 基础', path: '/basics' },
-        { name: '预处理器', path: '/preprocessors' },
-        { name: 'PostCSS', path: '/postcss' },
-        { name: 'CSS-in-JS', path: '/css-in-js' },
-        { name: 'TailwindCSS', path: '/tailwind' }
+        { name: 'HTML', path: '/html' },
+        { name: 'CSS', path: '/css' },
+        { name: 'JavaScript', path: '/javascript', disabled: true }
       ]
     }
   },
@@ -101,6 +109,14 @@ export default {
 
 .nav-link-active {
   @apply text-blue-600 bg-blue-50;
+}
+
+.nav-link-disabled {
+  @apply text-gray-400 cursor-not-allowed;
+}
+
+.nav-link-disabled:hover {
+  @apply text-gray-400;
 }
 
 /* 平滑过渡效果 */

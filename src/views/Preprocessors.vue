@@ -20,7 +20,7 @@
               <ul class="space-y-2">
                 <li v-for="item in modules" :key="item.path">
                   <router-link
-                    :to="`/preprocessors/${item.path}`"
+                    :to="`/css/preprocessors/${item.path}`"
                     class="nav-item"
                     :class="{ 'nav-item-active': $route.path.includes(item.path) }"
                   >
@@ -68,7 +68,7 @@
         <!-- 主内容区域 -->
         <main class="flex-1">
           <!-- 默认概览页面 -->
-          <div v-if="$route.path === '/preprocessors'" class="overview">
+          <div v-if="$route.path === '/css/preprocessors'" class="overview">
             <div class="bg-white rounded-lg shadow-md p-8 mb-8">
               <h2 class="text-2xl font-bold text-gray-900 mb-4">CSS 预处理器概览</h2>
               <p class="text-gray-600 mb-6 leading-relaxed">
