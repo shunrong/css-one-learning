@@ -46,51 +46,12 @@
           </div>
           
           <div class="demo-code">
-            <pre><code>&lt;canvas id="myCanvas" width="400" height="300"&gt;&lt;/canvas&gt;
-
-&lt;script&gt;
-const canvas = document.getElementById('myCanvas');
-const ctx = canvas.getContext('2d');
-
-// 绘制矩形
-ctx.fillStyle = '#3b82f6';
-ctx.fillRect(10, 10, 100, 80);
-
-// 绘制圆形
-ctx.beginPath();
-ctx.arc(200, 50, 30, 0, 2 * Math.PI);
-ctx.fillStyle = '#ef4444';
-ctx.fill();
-
-// 绘制线条
-ctx.beginPath();
-ctx.moveTo(10, 120);
-ctx.lineTo(100, 180);
-ctx.strokeStyle = '#10b981';
-ctx.lineWidth = 3;
-ctx.stroke();
-
-// 绘制路径
-ctx.beginPath();
-ctx.moveTo(150, 120);
-ctx.lineTo(200, 120);
-ctx.lineTo(175, 180);
-ctx.closePath();
-ctx.fillStyle = '#f59e0b';
-ctx.fill();
-
-// 渐变填充
-const gradient = ctx.createLinearGradient(0, 0, 200, 0);
-gradient.addColorStop(0, '#8b5cf6');
-gradient.addColorStop(1, '#ec4899');
-ctx.fillStyle = gradient;
-ctx.fillRect(220, 120, 100, 60);
-
-// 文字绘制
-ctx.font = '20px Arial';
-ctx.fillStyle = '#1f2937';
-ctx.fillText('Canvas文字', 10, 250);
-&lt;/script&gt;</code></pre>
+            <CodeBlock 
+              :code="canvasBasicCode" 
+              language="markup" 
+              title="Canvas 基础绘制"
+              :show-line-numbers="true"
+            />
           </div>
         </div>
       </section>
@@ -335,7 +296,12 @@ ctx.fillText('Canvas文字', 10, 250);
 </template>
 
 <script>
+import CodeBlock from '@/components/common/CodeBlock.vue'
+
 export default {
+  components: {
+    CodeBlock
+  },
   name: 'CanvasHTML',
   data() {
     return {
@@ -360,6 +326,55 @@ export default {
       
       clockAnimationRunning: false,
       clockAnimationId: null
+    }
+  },
+  computed: {
+    canvasBasicCode() {
+      return `<canvas id="myCanvas" width="400" height="300"></canvas>
+
+<script type="text/javascript">
+const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+
+// 绘制矩形
+ctx.fillStyle = '#3b82f6';
+ctx.fillRect(10, 10, 100, 80);
+
+// 绘制圆形
+ctx.beginPath();
+ctx.arc(200, 50, 30, 0, 2 * Math.PI);
+ctx.fillStyle = '#ef4444';
+ctx.fill();
+
+// 绘制线条
+ctx.beginPath();
+ctx.moveTo(10, 120);
+ctx.lineTo(100, 180);
+ctx.strokeStyle = '#10b981';
+ctx.lineWidth = 3;
+ctx.stroke();
+
+// 绘制路径
+ctx.beginPath();
+ctx.moveTo(150, 120);
+ctx.lineTo(200, 120);
+ctx.lineTo(175, 180);
+ctx.closePath();
+ctx.fillStyle = '#f59e0b';
+ctx.fill();
+
+// 渐变填充
+const gradient = ctx.createLinearGradient(0, 0, 200, 0);
+gradient.addColorStop(0, '#8b5cf6');
+gradient.addColorStop(1, '#ec4899');
+ctx.fillStyle = gradient;
+ctx.fillRect(220, 120, 100, 60);
+
+// 文字绘制
+ctx.font = '20px Arial';
+ctx.fillStyle = '#1f2937';
+ctx.fillText('Canvas文字', 10, 250);
+<` + `/script>`
     }
   },
   mounted() {

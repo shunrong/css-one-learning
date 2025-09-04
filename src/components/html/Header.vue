@@ -494,7 +494,12 @@
 </template>
 
 <script>
+import CodeBlock from '@/components/common/CodeBlock.vue'
+
 export default {
+  components: {
+    CodeBlock
+  },
   name: 'DocumentHeadHTML'
 }
 </script>

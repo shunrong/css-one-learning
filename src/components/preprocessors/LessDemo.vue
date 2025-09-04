@@ -266,7 +266,7 @@
 
         <div class="code-display">
           <h4 class="font-semibold mb-2">Less 函数示例</h4>
-          <pre class="code-block"><code>{{ functionCode }}</code></pre>
+          <CodeBlock :code="functionCode" language="css" :show-line-numbers="true" />
         </div>
       </div>
     </section>
@@ -610,7 +610,12 @@ gulp.task('less', function () {
 </template>
 
 <script>
+import CodeBlock from '@/components/common/CodeBlock.vue'
+
 export default {
+  components: {
+    CodeBlock
+  },
   name: 'LessDemo',
   data() {
     return {

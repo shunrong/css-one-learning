@@ -93,14 +93,12 @@
         </div>
 
         <div class="code-display">
-          <h4 class="font-semibold mb-2">生成的 CSS 代码</h4>
-          <pre class="code-block"><code>.flex-container {
-  display: flex;
-  flex-direction: {{ flexDirection }};
-  justify-content: {{ justifyContent }};
-  align-items: {{ alignItems }};
-  flex-wrap: {{ flexWrap }};
-}</code></pre>
+          <CodeBlock 
+            :code="flexCSS" 
+            language="css" 
+            title="生成的 CSS 代码"
+            :show-line-numbers="true"
+          />
         </div>
       </div>
     </section>
@@ -192,14 +190,12 @@
         </div>
 
         <div class="code-display">
-          <h4 class="font-semibold mb-2">生成的 CSS 代码</h4>
-          <pre class="code-block"><code>.grid-container {
-  display: grid;
-  grid-template-columns: {{ gridColumns }};
-  grid-template-rows: {{ gridRows }};
-  gap: {{ gridGap }};
-  justify-items: {{ justifyItems }};
-}</code></pre>
+          <CodeBlock 
+            :code="gridCSS" 
+            language="css" 
+            title="生成的 CSS 代码"
+            :show-line-numbers="true"
+          />
         </div>
       </div>
     </section>
@@ -267,12 +263,12 @@
         </div>
 
         <div class="code-display">
-          <h4 class="font-semibold mb-2">生成的 CSS 代码</h4>
-          <pre class="code-block"><code>.positioned-element {
-  position: {{ position }};
-  top: {{ positionTop }}px;
-  left: {{ positionLeft }}px;
-}</code></pre>
+          <CodeBlock 
+            :code="positionCSS" 
+            language="css" 
+            title="生成的 CSS 代码"
+            :show-line-numbers="true"
+          />
         </div>
       </div>
     </section>
@@ -280,7 +276,12 @@
 </template>
 
 <script>
+import CodeBlock from '@/components/common/CodeBlock.vue'
+
 export default {
+  components: {
+    CodeBlock
+  },
   name: 'LayoutDemo',
   data() {
     return {
@@ -309,6 +310,31 @@ export default {
     }
   },
   computed: {
+    flexCSS() {
+      return `.flex-container {
+  display: flex;
+  flex-direction: ${this.flexDirection};
+  justify-content: ${this.justifyContent};
+  align-items: ${this.alignItems};
+  flex-wrap: ${this.flexWrap};
+}`
+    },
+    gridCSS() {
+      return `.grid-container {
+  display: grid;
+  grid-template-columns: ${this.gridColumns};
+  grid-template-rows: ${this.gridRows};
+  gap: ${this.gridGap}px;
+  justify-items: ${this.justifyItems};
+}`
+    },
+    positionCSS() {
+      return `.positioned-element {
+  position: ${this.position};
+  top: ${this.positionTop}px;
+  left: ${this.positionLeft}px;
+}`
+    },
     flexContainerStyle() {
       return {
         display: 'flex',

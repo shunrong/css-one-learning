@@ -12,7 +12,11 @@
           <h4>{{ concept.name }}</h4>
           <p>{{ concept.description }}</p>
           <div class="code-block">
-            <pre><code>{{ concept.example }}</code></pre>
+            <CodeBlock 
+              :code="concept.example" 
+              language="javascript" 
+              :show-line-numbers="true"
+            />
           </div>
         </div>
       </div>
@@ -46,7 +50,11 @@
               <strong>返回：</strong>{{ method.returns }}
             </div>
             <div class="code-block">
-              <pre><code>{{ method.example }}</code></pre>
+              <CodeBlock 
+                :code="method.example" 
+                language="javascript" 
+                :show-line-numbers="true"
+              />
             </div>
           </div>
         </div>
@@ -59,7 +67,11 @@
               <strong>语法：</strong>{{ method.syntax }}
             </div>
             <div class="code-block">
-              <pre><code>{{ method.example }}</code></pre>
+              <CodeBlock 
+                :code="method.example" 
+                language="javascript" 
+                :show-line-numbers="true"
+              />
             </div>
           </div>
         </div>
@@ -91,7 +103,11 @@
               <h5>{{ operation.name }}</h5>
               <p>{{ operation.description }}</p>
               <div class="code-block">
-                <pre><code>{{ operation.example }}</code></pre>
+                <CodeBlock 
+                  :code="operation.example" 
+                  language="javascript" 
+                  :show-line-numbers="true"
+                />
               </div>
             </div>
           </div>
@@ -162,7 +178,11 @@
             </div>
           </div>
           <div class="code-block">
-            <pre><code>{{ eventFlowExample }}</code></pre>
+            <CodeBlock 
+              :code="eventFlowExample" 
+              language="javascript" 
+              :show-line-numbers="true"
+            />
           </div>
         </div>
 
@@ -288,8 +308,12 @@
 
 <script>
 import { ref, onMounted } from 'vue'
+import CodeBlock from '@/components/common/CodeBlock.vue'
 
 export default {
+  components: {
+    CodeBlock
+  },
   name: 'DOMAPI',
   setup() {
     const activeSelectorTab = ref('basic')

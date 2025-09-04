@@ -426,7 +426,12 @@ audio.pause();       // 暂停
 </template>
 
 <script>
+import CodeBlock from '@/components/common/CodeBlock.vue'
+
 export default {
+  components: {
+    CodeBlock
+  },
   name: 'MediaHTML',
   data() {
     return {

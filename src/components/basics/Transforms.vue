@@ -67,7 +67,7 @@
 
         <div class="code-display">
           <h4 class="font-semibold mb-2">生成的 CSS 代码</h4>
-          <pre class="code-block"><code>{{ transform2DCSS }}</code></pre>
+          <CodeBlock :code="transform2DCSS" language="css" :show-line-numbers="true" />
         </div>
       </div>
     </section>
@@ -133,7 +133,7 @@
 
         <div class="code-display">
           <h4 class="font-semibold mb-2">生成的 CSS 代码</h4>
-          <pre class="code-block"><code>{{ transform3DCSS }}</code></pre>
+          <CodeBlock :code="transform3DCSS" language="css" :show-line-numbers="true" />
         </div>
       </div>
     </section>
@@ -184,7 +184,7 @@
 
         <div class="code-display">
           <h4 class="font-semibold mb-2">生成的 CSS 代码</h4>
-          <pre class="code-block"><code>{{ originCSS }}</code></pre>
+          <CodeBlock :code="originCSS" language="css" :show-line-numbers="true" />
         </div>
       </div>
     </section>
@@ -232,7 +232,12 @@
 </template>
 
 <script>
+import CodeBlock from '@/components/common/CodeBlock.vue'
+
 export default {
+  components: {
+    CodeBlock
+  },
   name: 'TransformsDemo',
   data() {
     return {

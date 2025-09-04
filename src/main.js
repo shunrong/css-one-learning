@@ -82,6 +82,12 @@ const routes = [
       { path: 'async', component: () => import('@/components/javascript/AsyncProgramming.vue') },
       { path: 'modules', component: () => import('@/components/javascript/Modules.vue') }
     ]
+  },
+  // 代码高亮测试页面
+  {
+    path: '/test/highlight',
+    name: 'CodeHighlightTest',
+    component: () => import('@/views/CodeHighlightTest.vue')
   }
 ]
 

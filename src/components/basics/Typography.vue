@@ -86,8 +86,12 @@
         </div>
 
         <div class="code-display">
-          <h4 class="font-semibold mb-2">生成的 CSS 代码</h4>
-          <pre class="code-block"><code>{{ generatedCSS }}</code></pre>
+          <CodeBlock 
+            :code="generatedCSS" 
+            language="css" 
+            title="生成的 CSS 代码"
+            :show-line-numbers="true"
+          />
         </div>
       </div>
     </section>
@@ -160,8 +164,12 @@
         </div>
 
         <div class="code-display">
-          <h4 class="font-semibold mb-2">生成的 CSS 代码</h4>
-          <pre class="code-block"><code>{{ layoutCSS }}</code></pre>
+          <CodeBlock 
+            :code="layoutCSS" 
+            language="css" 
+            title="生成的 CSS 代码"
+            :show-line-numbers="true"
+          />
         </div>
       </div>
     </section>
@@ -229,8 +237,12 @@
         </div>
 
         <div class="code-display">
-          <h4 class="font-semibold mb-2">效果 CSS 代码</h4>
-          <pre class="code-block"><code>{{ effectsCSS }}</code></pre>
+          <CodeBlock 
+            :code="effectsCSS" 
+            language="css" 
+            title="效果 CSS 代码"
+            :show-line-numbers="true"
+          />
         </div>
       </div>
     </section>
@@ -305,7 +317,12 @@
 </template>
 
 <script>
+import CodeBlock from '@/components/common/CodeBlock.vue'
+
 export default {
+  components: {
+    CodeBlock
+  },
   name: 'TypographyDemo',
   data() {
     return {

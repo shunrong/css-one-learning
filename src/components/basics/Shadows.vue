@@ -72,7 +72,7 @@
 
         <div class="code-display">
           <h4 class="font-semibold mb-2">生成的 CSS 代码</h4>
-          <pre class="code-block"><code>{{ boxShadowCSS }}</code></pre>
+          <CodeBlock :code="boxShadowCSS" language="css" :show-line-numbers="true" />
         </div>
       </div>
     </section>
@@ -138,7 +138,7 @@
 
         <div class="code-display">
           <h4 class="font-semibold mb-2">生成的 CSS 代码</h4>
-          <pre class="code-block"><code>{{ textShadowCSS }}</code></pre>
+          <CodeBlock :code="textShadowCSS" language="css" :show-line-numbers="true" />
         </div>
       </div>
     </section>
@@ -254,7 +254,12 @@
 </template>
 
 <script>
+import CodeBlock from '@/components/common/CodeBlock.vue'
+
 export default {
+  components: {
+    CodeBlock
+  },
   name: 'ShadowsDemo',
   data() {
     return {

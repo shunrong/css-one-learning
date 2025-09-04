@@ -125,42 +125,12 @@
           </div>
           
           <div class="demo-code">
-            <pre><code>&lt;form&gt;
-  &lt;!-- 文本输入 --&gt;
-  &lt;input type="text" placeholder="姓名" required&gt;
-  &lt;input type="email" placeholder="邮箱" required&gt;
-  &lt;input type="tel" placeholder="电话"&gt;
-  &lt;input type="url" placeholder="网站"&gt;
-  
-  &lt;!-- 数字和日期 --&gt;
-  &lt;input type="number" min="1" max="120"&gt;
-  &lt;input type="date"&gt;
-  &lt;input type="password"&gt;
-  
-  &lt;!-- 多行文本 --&gt;
-  &lt;textarea rows="3" placeholder="简介"&gt;&lt;/textarea&gt;
-  
-  &lt;!-- 选择控件 --&gt;
-  &lt;select&gt;
-    &lt;option value=""&gt;请选择&lt;/option&gt;
-    &lt;option value="cn"&gt;中国&lt;/option&gt;
-  &lt;/select&gt;
-  
-  &lt;!-- 单选和多选 --&gt;
-  &lt;fieldset&gt;
-    &lt;legend&gt;性别&lt;/legend&gt;
-    &lt;input type="radio" name="gender" value="male"&gt;
-    &lt;input type="radio" name="gender" value="female"&gt;
-  &lt;/fieldset&gt;
-  
-  &lt;fieldset&gt;
-    &lt;legend&gt;爱好&lt;/legend&gt;
-    &lt;input type="checkbox" value="reading"&gt;
-    &lt;input type="checkbox" value="music"&gt;
-  &lt;/fieldset&gt;
-  
-  &lt;button type="submit"&gt;提交&lt;/button&gt;
-&lt;/form&gt;</code></pre>
+            <CodeBlock 
+              :code="basicFormCode" 
+              language="markup" 
+              title="基础表单HTML"
+              :show-line-numbers="true"
+            />
           </div>
         </div>
       </section>
@@ -312,7 +282,12 @@
 </template>
 
 <script>
+import CodeBlock from '@/components/common/CodeBlock.vue'
+
 export default {
+  components: {
+    CodeBlock
+  },
   name: 'FormsHTML',
   data() {
     return {
@@ -337,6 +312,46 @@ export default {
         month: ''
       },
       submitResult: null
+    }
+  },
+  computed: {
+    basicFormCode() {
+      return `<form>
+  <!-- 文本输入 -->
+  <input type="text" placeholder="姓名" required>
+  <input type="email" placeholder="邮箱" required>
+  <input type="tel" placeholder="电话">
+  <input type="url" placeholder="网站">
+  
+  <!-- 数字和日期 -->
+  <input type="number" min="1" max="120">
+  <input type="date">
+  <input type="password">
+  
+  <!-- 多行文本 -->
+  <textarea rows="3" placeholder="简介"></textarea>
+  
+  <!-- 选择控件 -->
+  <select>
+    <option value="">请选择</option>
+    <option value="cn">中国</option>
+  </select>
+  
+  <!-- 单选和多选 -->
+  <fieldset>
+    <legend>性别</legend>
+    <input type="radio" name="gender" value="male">
+    <input type="radio" name="gender" value="female">
+  </fieldset>
+  
+  <fieldset>
+    <legend>爱好</legend>
+    <input type="checkbox" value="reading">
+    <input type="checkbox" value="music">
+  </fieldset>
+  
+  <button type="submit">提交</button>
+</form>`
     }
   },
   methods: {

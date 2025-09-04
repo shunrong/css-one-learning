@@ -29,9 +29,13 @@
               <span class="color-name">{{ color.name }}</span>
             </div>
           </div>
-          <pre class="code-example"><code>color: red;
+          <CodeBlock 
+            code="color: red;
 background: blue;
-border-color: transparent;</code></pre>
+border-color: transparent;" 
+            language="css" 
+            :show-line-numbers="false"
+          />
         </div>
 
         <div class="color-method-card">
@@ -46,9 +50,13 @@ border-color: transparent;</code></pre>
               <span class="color-name">{{ color.value }}</span>
             </div>
           </div>
-          <pre class="code-example"><code>color: #ff0000;
+          <CodeBlock 
+            code="color: #ff0000;
 background: #00ff00;
-border-color: #0000ff80;</code></pre>
+border-color: #0000ff80;" 
+            language="css" 
+            :show-line-numbers="false"
+          />
         </div>
 
         <div class="color-method-card">
@@ -63,9 +71,13 @@ border-color: #0000ff80;</code></pre>
               <span class="color-name">{{ color.name }}</span>
             </div>
           </div>
-          <pre class="code-example"><code>color: rgb(255, 0, 0);
+          <CodeBlock 
+            code="color: rgb(255, 0, 0);
 background: rgba(0, 255, 0, 0.5);
-border-color: rgb(0 0 255 / 0.8);</code></pre>
+border-color: rgb(0 0 255 / 0.8);" 
+            language="css" 
+            :show-line-numbers="false"
+          />
         </div>
 
         <div class="color-method-card">
@@ -80,9 +92,13 @@ border-color: rgb(0 0 255 / 0.8);</code></pre>
               <span class="color-name">{{ color.name }}</span>
             </div>
           </div>
-          <pre class="code-example"><code>color: hsl(0, 100%, 50%);
+          <CodeBlock 
+            code="color: hsl(0, 100%, 50%);
 background: hsla(120, 100%, 50%, 0.7);
-border-color: hsl(240 100% 50% / 0.6);</code></pre>
+border-color: hsl(240 100% 50% / 0.6);" 
+            language="css" 
+            :show-line-numbers="false"
+          />
         </div>
       </div>
     </section>
@@ -208,8 +224,12 @@ border-color: hsl(240 100% 50% / 0.6);</code></pre>
         </div>
 
         <div class="code-display">
-          <h4 class="font-semibold mb-2">生成的 CSS 代码</h4>
-          <pre class="code-block"><code>background: {{ currentGradient }};</code></pre>
+          <CodeBlock 
+            :code="`background: ${currentGradient};`" 
+            language="css" 
+            title="生成的 CSS 代码"
+            :show-line-numbers="false"
+          />
         </div>
       </div>
     </section>
@@ -249,7 +269,12 @@ border-color: hsl(240 100% 50% / 0.6);</code></pre>
 </template>
 
 <script>
+import CodeBlock from '@/components/common/CodeBlock.vue'
+
 export default {
+  components: {
+    CodeBlock
+  },
   name: 'ColorsDemo',
   data() {
     return {

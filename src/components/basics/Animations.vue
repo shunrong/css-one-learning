@@ -73,7 +73,7 @@
 
         <div class="code-display">
           <h4 class="font-semibold mb-2">生成的 CSS 代码</h4>
-          <pre class="code-block"><code>{{ transitionCSS }}</code></pre>
+          <CodeBlock :code="transitionCSS" language="css" :show-line-numbers="true" />
         </div>
       </div>
     </section>
@@ -160,7 +160,7 @@
 
         <div class="code-display">
           <h4 class="font-semibold mb-2">生成的 CSS 代码</h4>
-          <pre class="code-block"><code>{{ animationCSS }}</code></pre>
+          <CodeBlock :code="animationCSS" language="css" :show-line-numbers="true" />
         </div>
       </div>
     </section>
@@ -222,7 +222,7 @@
 
         <div class="keyframe-code">
           <h4 class="font-semibold mb-2">生成的关键帧代码</h4>
-          <pre class="code-block"><code>{{ customKeyframeCSS }}</code></pre>
+          <CodeBlock :code="customKeyframeCSS" language="css" :show-line-numbers="true" />
         </div>
       </div>
     </section>
@@ -293,7 +293,12 @@
 </template>
 
 <script>
+import CodeBlock from '@/components/common/CodeBlock.vue'
+
 export default {
+  components: {
+    CodeBlock
+  },
   name: 'AnimationsDemo',
   data() {
     return {

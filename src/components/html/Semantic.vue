@@ -224,26 +224,11 @@
 </template>
 
 <script>
+import { CodeHighlightMixin } from '@/utils/codeHighlight'
+
 export default {
   name: 'SemanticHTML',
-  mounted() {
-    // 高亮代码
-    this.highlightCode()
-  },
-  methods: {
-    highlightCode() {
-      // 简单的代码高亮（可以后续集成专业的代码高亮库）
-      const codeBlocks = this.$el.querySelectorAll('code')
-      codeBlocks.forEach(block => {
-        let html = block.innerHTML
-        // 高亮HTML标签
-        html = html.replace(/&lt;(\/?[a-zA-Z][^&gt;]*)&gt;/g, '<span class="tag">&lt;$1&gt;</span>')
-        // 高亮属性
-        html = html.replace(/(\w+)="/g, '<span class="attr">$1</span>="')
-        block.innerHTML = html
-      })
-    }
-  }
+  mixins: [CodeHighlightMixin]
 }
 </script>
 
@@ -461,14 +446,7 @@ export default {
   font-style: normal;
 }
 
-.demo-content code {
-  background: #fef2f2;
-  color: #dc2626;
-  padding: 0.125rem 0.375rem;
-  border-radius: 4px;
-  font-family: 'Courier New', monospace;
-  font-size: 0.875rem;
-}
+/* 代码样式已移至 Prism.js 主题 */
 
 .demo-content kbd {
   background: #374151;

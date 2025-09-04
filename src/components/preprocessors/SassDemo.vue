@@ -53,8 +53,12 @@
         </div>
 
         <div class="code-display">
-          <h4 class="font-semibold mb-2">Sass 变量代码</h4>
-          <pre class="code-block"><code>{{ sassVariablesCode }}</code></pre>
+          <CodeBlock 
+            :code="sassVariablesCode" 
+            language="scss" 
+            title="Sass 变量代码"
+            :show-line-numbers="true"
+          />
         </div>
       </div>
     </section>
@@ -319,8 +323,12 @@
         </div>
 
         <div class="code-display">
-          <h4 class="font-semibold mb-2">混合器定义与使用</h4>
-          <pre class="code-block"><code>{{ mixinCode }}</code></pre>
+          <CodeBlock 
+            :code="mixinCode" 
+            language="scss" 
+            title="混合器定义与使用"
+            :show-line-numbers="true"
+          />
         </div>
       </div>
     </section>
@@ -382,8 +390,12 @@
         </div>
 
         <div class="code-display">
-          <h4 class="font-semibold mb-2">Sass 函数示例</h4>
-          <pre class="code-block"><code>{{ functionCode }}</code></pre>
+          <CodeBlock 
+            :code="functionCode" 
+            language="scss" 
+            title="Sass 函数示例"
+            :show-line-numbers="true"
+          />
         </div>
       </div>
     </section>
@@ -613,7 +625,12 @@ $i: 1;
 </template>
 
 <script>
+import CodeBlock from '@/components/common/CodeBlock.vue'
+
 export default {
+  components: {
+    CodeBlock
+  },
   name: 'SassDemo',
   data() {
     return {

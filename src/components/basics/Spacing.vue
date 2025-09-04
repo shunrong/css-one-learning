@@ -89,8 +89,12 @@
         </div>
 
         <div class="code-display">
-          <h4 class="font-semibold mb-2">生成的 CSS 代码</h4>
-          <pre class="code-block"><code>{{ paddingCSS }}</code></pre>
+          <CodeBlock 
+            :code="paddingCSS" 
+            language="css" 
+            title="生成的 CSS 代码"
+            :show-line-numbers="true"
+          />
         </div>
       </div>
     </section>
@@ -134,8 +138,12 @@
         </div>
 
         <div class="code-display">
-          <h4 class="font-semibold mb-2">生成的 CSS 代码</h4>
-          <pre class="code-block"><code>{{ marginCSS }}</code></pre>
+          <CodeBlock 
+            :code="marginCSS" 
+            language="css" 
+            title="生成的 CSS 代码"
+            :show-line-numbers="true"
+          />
         </div>
       </div>
     </section>
@@ -185,8 +193,12 @@
         </div>
 
         <div class="code-display">
-          <h4 class="font-semibold mb-2">生成的 CSS 代码</h4>
-          <pre class="code-block"><code>{{ boxSizingCSS }}</code></pre>
+          <CodeBlock 
+            :code="boxSizingCSS" 
+            language="css" 
+            title="生成的 CSS 代码"
+            :show-line-numbers="true"
+          />
         </div>
       </div>
     </section>
@@ -239,7 +251,8 @@
           <div class="practice-card">
             <h4 class="practice-title">📱 响应式间距</h4>
             <div class="responsive-example">
-              <pre style="color: unset;"><code>/* 移动端 */
+              <CodeBlock 
+                code="/* 移动端 */
 .container {
   padding: 1rem;
 }
@@ -249,7 +262,10 @@
   .container {
     padding: 2rem;
   }
-}</code></pre>
+}" 
+                language="css" 
+                :show-line-numbers="true"
+              />
             </div>
           </div>
         </div>
@@ -259,7 +275,12 @@
 </template>
 
 <script>
+import CodeBlock from '@/components/common/CodeBlock.vue'
+
 export default {
+  components: {
+    CodeBlock
+  },
   name: 'SpacingDemo',
   data() {
     return {
