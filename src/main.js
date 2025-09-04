@@ -68,12 +68,19 @@ const routes = [
       { path: 'canvas', component: () => import('@/components/html/Canvas.vue') },
     ]
   },
-  // 兼容旧路由
-  { path: '/basics', redirect: '/css/basics' },
-  { path: '/preprocessors', redirect: '/css/preprocessors' },
-  { path: '/postcss', redirect: '/css/postcss' },
-  { path: '/css-in-js', redirect: '/css/css-in-js' },
-  { path: '/tailwind', redirect: '/css/tailwind' }
+  // JavaScript 技术栈路由
+  {
+    path: '/javascript',
+    name: 'JSBasics',
+    component: () => import('@/views/JSBasics.vue'),
+    children: [
+      { path: 'datatypes', component: () => import('@/components/javascript/DataTypes.vue') },
+      { path: 'functions', component: () => import('@/components/javascript/Functions.vue') },
+      { path: 'prototype', component: () => import('@/components/javascript/Prototype.vue') },
+      { path: 'dom', component: () => import('@/components/javascript/DOMAPI.vue') },
+      { path: 'bom', component: () => import('@/components/javascript/BOMAPI.vue') }
+    ]
+  }
 ]
 
 const router = createRouter({

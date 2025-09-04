@@ -171,10 +171,10 @@ export default {
         {
           title: 'JavaScript',
           symbol: 'JS',
-          description: '网页的交互逻辑，学习现代 JavaScript 特性、DOM 操作、异步编程等核心概念',
-          skills: ['ES6+ 语法', 'DOM 操作', '异步编程', '模块化', '前端框架'],
+          description: '网页的交互逻辑，学习 JavaScript 基础语法、DOM 操作、BOM API 等核心概念',
+          skills: ['数据类型', '函数编程', '原型继承', 'DOM 操作', 'BOM API'],
           path: '/javascript',
-          available: false,
+          available: true,
           iconClass: 'w-20 h-20 bg-yellow-100 text-yellow-600 rounded-2xl flex items-center justify-center text-3xl font-bold'
         }
       ],
@@ -222,9 +222,9 @@ export default {
         {
           title: 'JavaScript 交互',
           description: '掌握JavaScript编程、DOM操作和现代前端开发',
-          skills: ['ES6+语法', 'DOM操作', '异步编程', '模块化'],
+          skills: ['基础语法', 'DOM操作', '原型继承', 'BOM API'],
           path: '/javascript',
-          available: false
+          available: true
         }
       ]
     }

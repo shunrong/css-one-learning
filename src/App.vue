@@ -90,7 +90,7 @@ export default {
       navItems: [
         { name: 'HTML', path: '/html' },
         { name: 'CSS', path: '/css' },
-        { name: 'JavaScript', path: '/javascript', disabled: true }
+        { name: 'JavaScript', path: '/javascript' }
       ]
     }
   },
