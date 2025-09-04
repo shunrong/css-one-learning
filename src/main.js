@@ -78,7 +78,9 @@ const routes = [
       { path: 'functions', component: () => import('@/components/javascript/Functions.vue') },
       { path: 'prototype', component: () => import('@/components/javascript/Prototype.vue') },
       { path: 'dom', component: () => import('@/components/javascript/DOMAPI.vue') },
-      { path: 'bom', component: () => import('@/components/javascript/BOMAPI.vue') }
+      { path: 'bom', component: () => import('@/components/javascript/BOMAPI.vue') },
+      { path: 'async', component: () => import('@/components/javascript/AsyncProgramming.vue') },
+      { path: 'modules', component: () => import('@/components/javascript/Modules.vue') }
     ]
   }
 ]
